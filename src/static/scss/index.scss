@@ -1,0 +1,14 @@
+.Header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+
+
+    input[type="text"]{
+        height: 25px;
+        margin: 10px;
+    }
+}
