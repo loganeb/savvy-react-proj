@@ -1,13 +1,11 @@
-import * as React from 'react';
-import Layout from './components/Layout';
+import * as React from "react";
+import Layout from "./components/Layout";
 
 class App extends React.Component <{}> {
-    render(){
+    public render() {
         return(
-            <Layout>
-
-            </Layout>
-        )
+            <Layout/>
+        );
     }
 }
 

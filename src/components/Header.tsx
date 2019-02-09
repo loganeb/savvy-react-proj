@@ -1,13 +1,13 @@
-import * as React from 'react';
+import * as React from "react";
 
 class Header extends React.Component <{}> {
-    render(){
+    public render() {
         return(
             <div className="Header container-fluid">
                 <h4>LegalPractice</h4>
                 <input type="text" placeholder="Search"/>
             </div>
-        )
+        );
     }
 }
 

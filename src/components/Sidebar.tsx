@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from "react";
 
 class Sidebar extends React.Component <{}> {
-    render(){
+    public render() {
         return(
             <div className="Sidebar container-fluid">
                 <h2>Sidebar</h2>
