@@ -1,14 +1,19 @@
 import * as React from 'react';
 import Menu from './Menu';
 import Header from './Header';
+import Sidebar from './Sidebar';
 
 class Layout extends React.Component <{}> {
     render(){
         return(
-            <div className="Layout">
+            <div className='Layout'>
                 <Header/>
-                <h3>Bank Accounts</h3>
-                <Menu />
+                <div className="content">
+                    <Menu />
+                    <div><h3>Future Router Content</h3></div>
+                    <Sidebar />
+                </div>
+                
             </div>
         )
     }
