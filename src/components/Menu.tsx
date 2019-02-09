@@ -1,16 +1,17 @@
-import * as React from 'react';
+import * as React from "react";
+import { Link } from "react-router-dom";
 
 class Menu extends React.Component <{}> {
-    render(){
+    public render() {
         return(
-            <div>
-                <ul>
-                    <li>Menu Item</li>
-                    <li>Menu Item</li>
-                    <li>Menu Item</li>
+            <nav className="Menu">
+                <ul className="nav-links">
+                    <li><Link to="/" >Home</Link></li>
+                    <li><Link to="/billing" >Billing</Link></li>
+                    <li><Link to="/messages" >Messages</Link></li>
                 </ul>
-            </div>
-        )
+            </nav>
+        );
     }
 }
 
