@@ -88,19 +88,31 @@ body{
     background: $content-bg;
     height: 100%;
 
-    .nav-links{
+    .menu-items{
         list-style: none;
         padding: 0;
         margin: 0;
     }
 
-    .hover-menu{
+    .menu-btn{
+        padding: 0;
+        
+        i{
+            width: 40px;
+        }
+    }
+
+    .sub-menu{
         display: none;
-        position: fixed;
-        z-index: 1000;
-        background: #fff;
-        border: 1px solid rgba(0,0,0, 0.2);
-        border-radius: 5px;
+        position: relative;
+
+        ul{
+          list-style: none; 
+          padding: 0;
+          padding-left: 60px;
+          margin: 0; 
+        }
+        
     }
 }
 
@@ -110,6 +122,19 @@ body{
 
     .menu-text{
         display: none;
+    }
+
+    .sub-menu{
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        background: #fff;
+        border: 1px solid rgba(0,0,0, 0.2);
+        border-radius: 5px;
+
+        ul{ 
+            padding: 10px;
+        }
     }
 }
 

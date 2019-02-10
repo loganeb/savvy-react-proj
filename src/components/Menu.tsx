@@ -3,6 +3,7 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
 
 interface MenuState { // tslint:disable-line
     collapsed: boolean;
+    subMenuId: string;
 }
 
 class Menu extends React.Component <RouteComponentProps, MenuState> {
@@ -10,12 +11,19 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
         super();
         this.state = {
             collapsed: false,
+            subMenuId: "",
         };
 
+        this.navigate = this.navigate.bind(this);
         this.hideMenu = this.hideMenu.bind(this);
         this.showMenu = this.showMenu.bind(this);
+        this.toggleSubMenu = this.toggleSubMenu.bind(this);
         this.toggleCollapse = this.toggleCollapse.bind(this);
         this.isCollapsed = this.isCollapsed.bind(this);
+    }
+
+    public navigate = (route: string) => () => {
+        this.props.history.push(route);
     }
 
     public hideMenu = (id: string) => (): void => {
@@ -26,10 +34,64 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
         document.getElementById(id).style.display = "inline";
     }
 
+    public toggleSubMenu = (id: string) => (): void => {
+        // Sub-menu behavior when menu is not collapsed
+        if (!this.state.collapsed) {
+            // Blur menu item and no other item selected
+            if (id.length === 0) {
+                return;
+            }
+            if (this.state.subMenuId === id) {
+                document.getElementById(id).style.display = "none";
+                this.setState({
+                    subMenuId: "",
+                });
+                return;
+            }
+            document.getElementById(id).style.display = "inline";
+            this.setState({
+                subMenuId: id,
+            });
+            return;
+        }
+        // Sub-menu behavior when menu is collapsed
+        if (this.state.collapsed) {
+            // Blur menu item and no other item selected
+            if (id.length === 0) {
+                if (this.state.subMenuId.length > 0) {
+                    document.getElementById(this.state.subMenuId).style.display = "none";
+                }
+                this.setState({
+                    subMenuId: "",
+                });
+                return;
+            }
+            if (this.state.subMenuId === id) {
+                document.getElementById(id).style.display = "none";
+                this.setState({
+                    subMenuId: "",
+                });
+                return;
+            }
+            document.getElementById(id).style.display = "inline";
+            this.setState({
+                subMenuId: id,
+            });
+            return;
+        }
+    }
+
     public toggleCollapse(): void {
         this.setState({
             collapsed: !this.state.collapsed,
         });
+
+        // Hide all sub menus
+        const menu = document.getElementById("menu-items");
+        const subMenus: any = menu.getElementsByClassName("sub-menu");
+        for(let i = 0; i < subMenus.length; i++ ){ // tslint:disable-line
+            subMenus[i].style.display = "none";
+        }
     }
 
     public isCollapsed(): string {
@@ -39,12 +101,12 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
     public render() {
         return(
             <nav className={"Menu col" + this.isCollapsed()}>
-                <ul className="nav-links">
-                    <button className="collapse-btn btn" onClick={this.toggleCollapse}>
+                <ul className="menu-items" id="menu-items">
+                    <button className="collapse-btn menu-btn btn" onClick={this.toggleCollapse}>
                         <i className="fa fa-bars" aria-hidden="true" />
                     </button>
                     <li>
-                        <button className="menu-btn btn">
+                        <button className="menu-btn btn" onClick={this.navigate("/")}>
                             <i className="fa fa-home" aria-hidden="true" />
                             <span className="menu-text">Dashboard</span>
                         </button>
@@ -52,16 +114,32 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
                     <li>
                         <button
                             className="menu-btn btn"
-                            onClick={this.showMenu("billing-menu")}
-                            onBlur={this.hideMenu("billing-menu")}
+                            onClick={this.toggleSubMenu("billing-menu")}
+                            onBlur={this.toggleSubMenu("")}
                         >
                             <i className="fa fa-credit-card" aria-hidden="true" />
                             <span className="menu-text">Billing</span>
                         </button>
-                        <div id="billing-menu" className="hover-menu">
+                        <div id="billing-menu" className="sub-menu">
                                 <ul>
                                     <li>Accounts</li>
                                     <li>Payments</li>
+                                </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <button
+                            className="menu-btn btn"
+                            onClick={this.toggleSubMenu("contacts-menu")}
+                            onBlur={this.toggleSubMenu("")}
+                        >
+                            <i className="fa fa-user" aria-hidden="true" />
+                            <span className="menu-text">Contacts</span>
+                        </button>
+                        <div id="contacts-menu" className="sub-menu">
+                                <ul>
+                                    <li>Contact 1</li>
+                                    <li>Contact 2</li>
                                 </ul>
                         </div>
                     </li>
