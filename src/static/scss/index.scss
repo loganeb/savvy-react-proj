@@ -92,6 +92,14 @@ body{
     }
 }
 
+.menu-collapsed{
+    max-width: 70px;
+
+    .menu-text{
+        display: none;
+    }
+}
+
 .Sidebar {
     background: rgb(243, 243, 243);
     max-width: 300px;
