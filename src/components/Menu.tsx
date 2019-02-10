@@ -41,7 +41,7 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
             <nav className={"Menu col" + this.isCollapsed()}>
                 <ul className="nav-links">
                     <button className="collapse-btn btn" onClick={this.toggleCollapse}>
-                        <i className="fa fa-menu" aria-hidden="true" />
+                        <i className="fa fa-bars" aria-hidden="true" />
                     </button>
                     <li>
                         <button className="menu-btn btn">
@@ -58,7 +58,7 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
                             <i className="fa fa-credit-card" aria-hidden="true" />
                             <span className="menu-text">Billing</span>
                         </button>
-                        <div id="billing-menu" className="sub-menu">
+                        <div id="billing-menu" className="hover-menu">
                                 <ul>
                                     <li>Accounts</li>
                                     <li>Payments</li>

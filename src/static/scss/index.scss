@@ -84,16 +84,29 @@ body{
 
 .Menu{
     max-width: $brand-width + 30;
+    min-width: 200px;
     background: $content-bg;
     height: 100%;
 
     .nav-links{
         list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .hover-menu{
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        background: #fff;
+        border: 1px solid rgba(0,0,0, 0.2);
+        border-radius: 5px;
     }
 }
 
 .menu-collapsed{
     max-width: 70px;
+    min-width: 70px;
 
     .menu-text{
         display: none;
