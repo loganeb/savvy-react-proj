@@ -13,14 +13,16 @@ class Layout extends React.Component <{}> {
             <Router>
                 <div className="Layout">
                     <Header/>
-                    <div className="content">
+                    <div className="content container-fluid">
                         <Menu />
-                        <Switch>
-                            <Route path="/billing" component={Billing} />
-                            <Route path="/messages" component={Messages} />
-                            <Route path="/" component={Home} />
-                            <Route component={Home} />
-                        </Switch>
+                        <div className="content-center col-md-6">
+                            <Switch>
+                                <Route path="/billing" component={Billing} />
+                                <Route path="/messages" component={Messages} />
+                                <Route path="/" component={Home} />
+                                <Route component={Home} />
+                            </Switch>
+                        </div>
                         <Sidebar />
                     </div>
                 </div>
