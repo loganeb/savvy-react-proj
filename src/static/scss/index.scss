@@ -1,38 +1,52 @@
 $header-height: 50px;
+$brand-width: 225px;
+$content-bg: rgb(243, 243, 243);
 
-body {
-    width: 100%;
+html, body, .Layout{
+    width: 100vw;
+}
+
+body{
+    position: fixed;
+    height: 100vh;
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    background: rgb(231, 231, 231);
 }
 
 .Layout {
     margin: 0;
     padding: 0;
-    width: 100%;
 
     .content{
+        height: 100vh;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        padding: 0;
     }
 }
 
 .Header{
     height: $header-height;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
-    
     background: rgb(9, 116, 134);
     color: #fff;
+    width: 100%;
+
+    .brand{
+        width: $brand-width;
+
+        h1{
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 0.9em;
+        }
+    }
 
     .searchbar{
-        width: 60%;
+        margin: 0;
+        padding: 0;
 
         input[type="text"]{
             width: 100%;
@@ -41,19 +55,27 @@ body {
             border-radius: 7px;
             padding: 3px;
             font-family: FontAwesome, Arial;
+            color: #fff;
         }
 
         ::placeholder{
             color: #ddd;
             font-weight: bold;
+            font-size: 0.9em;
         }
     }
 
-    .sidebar-buttons{
-        text-wrap: nowrap;
+    .header-buttons{
+        max-width: 150px;
+        display: flex;
+        justify-content: flex-end;
 
         button{
             color: #fff;
+
+            :hover{
+                color: #bbb;
+            }
         }
     }
 
@@ -61,7 +83,16 @@ body {
 }
 
 .Menu{
+    max-width: $brand-width + 30;
+    background: $content-bg;
+    height: 100%;
+
     .nav-links{
         list-style: none;
     }
+}
+
+.Sidebar {
+    background: rgb(243, 243, 243);
+    max-width: 300px;
 }

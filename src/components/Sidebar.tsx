@@ -1,13 +1,18 @@
 import * as React from "react";
 
-class Sidebar extends React.Component <{}> {
+interface SideBarProps { // tslint:disable-line
+    display: boolean;
+}
+
+interface SideBarState { // tslint:disable-line
+    content: [];
+}
+
+class Sidebar extends React.Component <SideBarProps, SideBarState> {
     public render() {
         return(
-            <div className="Sidebar col-md-3">
+            <div className="Sidebar col">
                 <h2>Sidebar</h2>
-                <div>
-                    <p>Sidebar Content</p>
-                </div>
             </div>
         );
     }

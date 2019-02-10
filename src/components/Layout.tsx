@@ -10,23 +10,25 @@ import Sidebar from "./Sidebar";
 class Layout extends React.Component <{}> {
     public render() {
         return(
-            <Router>
-                <div className="Layout">
-                    <Header/>
-                    <div className="content container-fluid">
-                        <Menu />
-                        <div className="content-center col-md-6">
-                            <Switch>
-                                <Route path="/billing" component={Billing} />
-                                <Route path="/messages" component={Messages} />
-                                <Route path="/" component={Home} />
-                                <Route component={Home} />
-                            </Switch>
+            <div className="Layout">
+                <Router>
+                    <div>
+                        <Header/>
+                        <div className="content container-fluid">
+                            <Menu />
+                            <div className="content-center col">
+                                <Switch>
+                                    <Route path="/billing" component={Billing} />
+                                    <Route path="/messages" component={Messages} />
+                                    <Route path="/" component={Home} />
+                                    <Route component={Home} />
+                                </Switch>
+                            </div>
+                            <Sidebar display={true} />
                         </div>
-                        <Sidebar />
                     </div>
-                </div>
-            </Router>
+                </Router>
+            </div>
         );
     }
 }
