@@ -9,7 +9,7 @@ import Sidebar from "./Sidebar";
 
 interface LayoutState {// tslint:disable-line
     sideBarHeader: string;
-    sideBarContent: any;
+    sideBarShow: string;
     sideBarVisible: boolean;
 }
 
@@ -17,25 +17,36 @@ class Layout extends React.Component <{}, LayoutState> {
     constructor() {
         super();
         this.state = {
-            sideBarContent: "",
             sideBarHeader: "",
-            sideBarVisible: true,
+            sideBarShow: "",
+            sideBarVisible: false,
         };
         this.toggleSideBar = this.toggleSideBar.bind(this);
     }
 
-    public toggleSideBar(): void {
+    public toggleSideBar = (show?: string) => () => {
+        if (show && show !== this.state.sideBarShow) {
+            this.setState({
+                sideBarHeader: show.toUpperCase(),
+                sideBarShow: show,
+                sideBarVisible: true,
+            });
+            return;
+        }
         this.setState({
+            sideBarShow: "",
             sideBarVisible: !this.state.sideBarVisible,
         });
     }
+
 
     public sideBar() {
         if (this.state.sideBarVisible) {
             return(
                 <Sidebar
                     display={true}
-                    content={{header: "Sidebar", body: "Body text"}}
+                    header={this.state.sideBarHeader}
+                    show={this.state.sideBarShow}
                     toggleDisplay={this.toggleSideBar}
                 />
             );
@@ -48,10 +59,10 @@ class Layout extends React.Component <{}, LayoutState> {
             <div className="Layout">
                 <Router>
                     <div>
-                        <Header/>
+                        <Header toggleSideBar={this.toggleSideBar}/>
                         <div className="content container-fluid">
                             <Menu />
-                            <div className="content-center col">
+                            <div className="Page col">
                                 <Switch>
                                     <Route path="/billing" component={Billing} />
                                     <Route path="/messages" component={Messages} />

@@ -1,6 +1,8 @@
 $header-height: 50px;
 $brand-width: 225px;
 $content-bg: rgb(243, 243, 243);
+$element-border: 1px solid rgba(0,0,0,0.1);
+$body-box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
 
 html, body, .Layout{
     width: 100vw;
@@ -87,6 +89,7 @@ body{
     min-width: 200px;
     background: $content-bg;
     height: 100%;
+    box-shadow: 2px 0px 5px 0 rgba(0,0,0,0.2);
 
     .menu-items{
         list-style: none;
@@ -148,8 +151,8 @@ body{
 }
 
 .Sidebar {
-    background: $content-bg;
     max-width: 300px;
+    padding: 5px;
 
     .sidebar-header{
         display: flex;
@@ -158,5 +161,36 @@ body{
         flex-direction: row;
         flex-wrap: nowrap;
         font-size: 1.3em;
+        padding-left: 10px;
+
+        i{
+            font-size: 2em;
+            color: #aaa;
+        }
+    }
+
+    .sidebar-body{
+        background: $content-bg;
+        height: 100%;
+        padding: 5px;
+        box-shadow: $body-box-shadow;
+    }
+
+    .sidebar-list{
+        list-style: none;
+        border: $element-border;
+        border-radius: 5px;
+    }
+}
+
+.Page{
+    height: 1000px;
+    overflow-y: scroll;
+    padding: 10px;
+
+    .page-body{
+        background: $content-bg;
+        box-shadow: $body-box-shadow;
+        padding: 10px;
     }
 }
