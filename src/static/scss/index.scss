@@ -98,10 +98,17 @@ body{
         padding: 0;
 
         i{ width: 40px; }
+
+        .menu-text{
+            padding: 5px;
+        }
     }
 
-    .menu-btn:focus{
+    .btn:focus{
         background: rgb(194, 194, 194);
+        outline-color: rgb(0, 0, 0);
+        border: 2px solid rgba(0,0,0,0.6);
+        box-shadow: none;
     }
 
     .sub-menu{
@@ -143,4 +150,13 @@ body{
 .Sidebar {
     background: $content-bg;
     max-width: 300px;
+
+    .sidebar-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        font-size: 1.3em;
+    }
 }

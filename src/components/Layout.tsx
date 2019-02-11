@@ -7,7 +7,42 @@ import Header from "./Header";
 import Menu from "./Menu";
 import Sidebar from "./Sidebar";
 
-class Layout extends React.Component <{}> {
+interface LayoutState {// tslint:disable-line
+    sideBarHeader: string;
+    sideBarContent: any;
+    sideBarVisible: boolean;
+}
+
+class Layout extends React.Component <{}, LayoutState> {
+    constructor() {
+        super();
+        this.state = {
+            sideBarContent: "",
+            sideBarHeader: "",
+            sideBarVisible: true,
+        };
+        this.toggleSideBar = this.toggleSideBar.bind(this);
+    }
+
+    public toggleSideBar(): void {
+        this.setState({
+            sideBarVisible: !this.state.sideBarVisible,
+        });
+    }
+
+    public sideBar() {
+        if (this.state.sideBarVisible) {
+            return(
+                <Sidebar
+                    display={true}
+                    content={{header: "Sidebar", body: "Body text"}}
+                    toggleDisplay={this.toggleSideBar}
+                />
+            );
+        }
+        return;
+    }
+
     public render() {
         return(
             <div className="Layout">
@@ -24,7 +59,7 @@ class Layout extends React.Component <{}> {
                                     <Route component={Home} />
                                 </Switch>
                             </div>
-                            <Sidebar display={true} />
+                            {this.sideBar()}
                         </div>
                     </div>
                 </Router>

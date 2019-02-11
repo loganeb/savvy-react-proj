@@ -76,14 +76,14 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
             }
             // Current menu item selected
             if (this.state.subMenuId === id) {
-                document.getElementById(id).style.display = "none";
+                subMenu.style.display = "none";
                 this.setState({
                     subMenuId: "",
                 });
                 return;
             }
             // New menu item selected
-            document.getElementById(id).style.display = "inline";
+            subMenu.style.display = "inline";
             this.setState({
                 subMenuId: id,
             });
@@ -126,14 +126,15 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
                             className="menu-btn btn"
                             onClick={this.toggleSubMenu("billing-menu")}
                             onBlur={this.toggleSubMenu("")}
+                            tabIndex={0}
                         >
                             <i className="fa fa-credit-card" aria-hidden="true" />
                             <span className="menu-text">Billing</span>
                         </button>
                         <div id="billing-menu" className="sub-menu">
                                 <ul>
-                                    <li>Accounts</li>
-                                    <li>Payments</li>
+                                    <li tabIndex={0}>Accounts</li>
+                                    <li tabIndex={0}>Payments</li>
                                 </ul>
                         </div>
                     </li>
@@ -148,8 +149,8 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
                         </button>
                         <div id="contacts-menu" className="sub-menu">
                                 <ul>
-                                    <li>Contact 1</li>
-                                    <li>Contact 2</li>
+                                    <li tabIndex={0}>Contact 1</li>
+                                    <li tabIndex={0}>Contact 2</li>
                                 </ul>
                         </div>
                     </li>
