@@ -96,10 +96,12 @@ body{
 
     .menu-btn{
         padding: 0;
-        
-        i{
-            width: 40px;
-        }
+
+        i{ width: 40px; }
+    }
+
+    .menu-btn:focus{
+        background: rgb(194, 194, 194);
     }
 
     .sub-menu{
@@ -139,6 +141,6 @@ body{
 }
 
 .Sidebar {
-    background: rgb(243, 243, 243);
+    background: $content-bg;
     max-width: 300px;
 }
