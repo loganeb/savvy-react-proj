@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Link, RouteComponentProps, withRouter } from "react-router-dom";
 
-interface MenuState { // tslint:disable-line
+export interface MenuState { // tslint:disable-line
     collapsed: boolean;
     subMenuId: string;
 }
 
-class Menu extends React.Component <RouteComponentProps, MenuState> {
+export class Menu extends React.Component <RouteComponentProps, MenuState> {
     constructor() {
         super();
         this.state = {
@@ -34,6 +34,7 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
 
     public toggleSubMenu = (id: string) => (): void => {
         const subMenu = document.getElementById(id);
+
         if (!this.state.collapsed) {
             // Close previously selected item
             if (this.state.subMenuId.length === 0 && subMenu.style.display === "inline") {

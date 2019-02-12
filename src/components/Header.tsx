@@ -15,7 +15,7 @@ class Header extends React.Component<HeaderProps, {}> {
                     <div className="searchbar navbar-item form-inline col">
                         <input type="text" placeholder="&#xF002; Search" />
                     </div>
-                    <div className="header-buttons navbar-item col">
+                    <div className="header-buttons navbar-item ">
                         <button className="btn btn-link" onClick={this.props.toggleSideBar("notifications")} >
                             <i className="fa fa-bell-o" aria-hidden="true"/>
                         </button>

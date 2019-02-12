@@ -15,8 +15,13 @@ module.exports = {
             // Typescript rules
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
+                use: 'awesome-typescript-loader',
                 exclude: /node_modules/
+            },
+            {
+                test: /.js$/,
+                loader: 'source-map-loader',
+                enforce: 'pre',
             },
             //CSS rules
             {
