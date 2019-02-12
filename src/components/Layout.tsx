@@ -39,7 +39,6 @@ class Layout extends React.Component <{}, LayoutState> {
         });
     }
 
-
     public sideBar() {
         if (this.state.sideBarVisible) {
             return(

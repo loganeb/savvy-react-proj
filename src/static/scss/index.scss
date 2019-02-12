@@ -1,5 +1,5 @@
 $header-height: 50px;
-$brand-width: 225px;
+$brand-width: 175px;
 $content-bg: rgb(243, 243, 243);
 $element-border: 1px solid rgba(0,0,0,0.1);
 $body-box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
@@ -31,7 +31,7 @@ body{
 }
 
 .Header{
-    height: $header-height;
+    min-height: $header-height;
     background: rgb(9, 116, 134);
     color: #fff;
     width: 100%;
@@ -72,17 +72,20 @@ body{
         display: flex;
         justify-content: flex-end;
 
-        button{
+        .btn{
             color: #fff;
+            width: 40px;
+            padding: 5px;
+        }
 
-            :hover{
-                color: #bbb;
-            }
+        .btn:focus{
+            background: rgba(0,0,0,0.4);
+            color: #fff;
         }
     }
 
     
-}
+}// end .Header
 
 .Menu{
     max-width: $brand-width + 30;
@@ -99,11 +102,13 @@ body{
 
     .menu-btn{
         padding: 0;
+        color: #888;
 
         i{ width: 40px; }
 
         .menu-text{
             padding: 5px;
+            color: #555;
         }
     }
 
@@ -117,6 +122,7 @@ body{
     .sub-menu{
         display: none;
         position: relative;
+        color: #555;
 
         ul{
           list-style: none; 
@@ -126,7 +132,7 @@ body{
         }
         
     }
-}
+}// end .Menu
 
 .menu-collapsed{
     max-width: 70px;
@@ -146,12 +152,14 @@ body{
 
         ul{ 
             padding: 10px;
+            margin: 0;
         }
     }
-}
+}// end .menu-collapsed
 
 .Sidebar {
     max-width: 300px;
+    min-width: 200px;
     padding: 5px;
 
     .sidebar-header{
@@ -160,7 +168,8 @@ body{
         align-items: center;
         flex-direction: row;
         flex-wrap: nowrap;
-        font-size: 1.3em;
+        font-size: 1em;
+        font-weight: bold;
         padding-left: 10px;
 
         i{
@@ -172,7 +181,7 @@ body{
     .sidebar-body{
         background: $content-bg;
         height: 100%;
-        padding: 5px;
+        padding: 10px;
         box-shadow: $body-box-shadow;
     }
 
@@ -180,17 +189,45 @@ body{
         list-style: none;
         border: $element-border;
         border-radius: 5px;
+        padding: 10px;
+        margin: 0;
     }
-}
+
+    .transaction-list{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 0.8em;
+    }
+
+    .message-btn{
+        width: 100%;
+    }
+
+    .message-body{
+        border: 1px solid rgba(0,0,0,0.1);
+        padding: 10px;
+        background: #fff;
+    }
+}// end .Sidebar
 
 .Page{
     height: 1000px;
     overflow-y: scroll;
     padding: 10px;
+    min-width: 0px;
 
     .page-body{
         background: $content-bg;
         box-shadow: $body-box-shadow;
         padding: 10px;
+        min-height: 100vh;
+        width: 100%;
+    }
+}// end .Page
+
+@media only screen and (max-width: 600px){
+    .searchbar{
+        display: none;
     }
 }

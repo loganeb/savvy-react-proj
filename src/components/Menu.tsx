@@ -10,7 +10,7 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
     constructor() {
         super();
         this.state = {
-            collapsed: false,
+            collapsed: true,
             subMenuId: "",
         };
 
@@ -36,7 +36,6 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
 
     public toggleSubMenu = (id: string) => (): void => {
         const subMenu = document.getElementById(id);
-        // Sub-menu behavior when menu is not collapsed
         if (!this.state.collapsed) {
             // Blur menu item and no other item selected
             if (id.length === 0) {
@@ -47,22 +46,7 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
                 subMenu.style.display = "none";
                 return;
             }
-            // Current menu item selected
-            if (this.state.subMenuId === id) {
-                subMenu.style.display = "none";
-                this.setState({
-                    subMenuId: "",
-                });
-                return;
-            }
-            // New menu item selected
-            subMenu.style.display = "inline";
-            this.setState({
-                subMenuId: id,
-            });
-            return;
         }
-        // Sub-menu behavior when menu is collapsed
         if (this.state.collapsed) {
             // Blur menu item and no other item selected
             if (id.length === 0) {
@@ -74,21 +58,21 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
                 });
                 return;
             }
-            // Current menu item selected
-            if (this.state.subMenuId === id) {
-                subMenu.style.display = "none";
-                this.setState({
-                    subMenuId: "",
-                });
-                return;
-            }
-            // New menu item selected
-            subMenu.style.display = "inline";
+        }
+        // Current menu item selected
+        if (this.state.subMenuId === id) {
+            subMenu.style.display = "none";
             this.setState({
-                subMenuId: id,
+                subMenuId: "",
             });
             return;
         }
+        // New menu item selected
+        subMenu.style.display = "inline";
+        this.setState({
+            subMenuId: id,
+        });
+        return;
     }
 
     public toggleCollapse(): void {
@@ -108,12 +92,19 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
         return (this.state.collapsed ? " menu-collapsed" : "");
     }
 
+    public toggleButton() {
+        if (!this.state.collapsed) {
+            return (<i className="fa fa-arrow-left" aria-hidden="true" />);
+        }
+        return (<i className="fa fa-bars" aria-hidden="true" />);
+    }
+
     public render() {
         return(
             <nav className={"Menu col" + this.isCollapsed()}>
                 <ul className="menu-items" id="menu-items">
                     <button className="collapse-btn menu-btn btn" onClick={this.toggleCollapse}>
-                        <i className="fa fa-bars" aria-hidden="true" />
+                        {this.toggleButton()}
                     </button>
                     <li>
                         <button className="menu-btn btn" onClick={this.navigate("/")}>

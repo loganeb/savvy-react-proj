@@ -24,10 +24,8 @@ export const Messages = () => {
                 >
                     <strong>Message from:</strong> Bob
                 </button>
-                <div className="collapse" id="msg1">
-                    <div className="card card-body">
+                <div className="collapse message-body" id="msg1">
                         Hi, I would like to confirm our 4:00 PM meeting.
-                    </div>
                 </div>
             </li>
         </ul>
@@ -37,14 +35,6 @@ export const Messages = () => {
 export const Transactions = () => {
     return(
         <div className="row">
-            <div className="col">
-                <h5>Account</h5>
-                <ul className="transaction-list">
-                    <li>Bob's Burgers</li>
-                    <li>Megacorp</li>
-                    <li>Roger, Smith &amp; Brown</li>
-                </ul>
-            </div>
             <div className="col">
                 <h5>Amount</h5>
                 <ul className="transaction-list">
