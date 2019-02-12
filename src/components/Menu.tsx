@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RouteComponentProps, withRouter } from "react-router-dom";
+import { Link, RouteComponentProps, withRouter } from "react-router-dom";
 
 interface MenuState { // tslint:disable-line
     collapsed: boolean;
@@ -16,7 +16,6 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
 
         this.navigate = this.navigate.bind(this);
         this.hideMenu = this.hideMenu.bind(this);
-        this.showMenu = this.showMenu.bind(this);
         this.toggleSubMenu = this.toggleSubMenu.bind(this);
         this.toggleCollapse = this.toggleCollapse.bind(this);
         this.isCollapsed = this.isCollapsed.bind(this);
@@ -27,35 +26,18 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
     }
 
     public hideMenu = (id: string) => (): void => {
-        document.getElementById(id).style.display = "none";
-    }
-
-    public showMenu = (id: string) => (): void => {
-        document.getElementById(id).style.display = "inline";
+        if (this.state.collapsed) {
+            setTimeout(() => (document.getElementById(id).style.display = "none"),
+            100);
+        }
     }
 
     public toggleSubMenu = (id: string) => (): void => {
         const subMenu = document.getElementById(id);
         if (!this.state.collapsed) {
-            // Blur menu item and no other item selected
-            if (id.length === 0) {
-                return;
-            }
             // Close previously selected item
             if (this.state.subMenuId.length === 0 && subMenu.style.display === "inline") {
                 subMenu.style.display = "none";
-                return;
-            }
-        }
-        if (this.state.collapsed) {
-            // Blur menu item and no other item selected
-            if (id.length === 0) {
-                if (this.state.subMenuId.length > 0) {
-                    document.getElementById(this.state.subMenuId).style.display = "none";
-                }
-                this.setState({
-                    subMenuId: "",
-                });
                 return;
             }
         }
@@ -116,7 +98,7 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
                         <button
                             className="menu-btn btn"
                             onClick={this.toggleSubMenu("billing-menu")}
-                            onBlur={this.toggleSubMenu("")}
+                            onBlur={this.hideMenu("billing-menu")}
                             tabIndex={0}
                         >
                             <i className="fa fa-credit-card" aria-hidden="true" />
@@ -124,8 +106,8 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
                         </button>
                         <div id="billing-menu" className="sub-menu">
                                 <ul>
-                                    <li tabIndex={0}>Accounts</li>
-                                    <li tabIndex={0}>Payments</li>
+                                    <li tabIndex={0}><Link to="/accounts">Accounts</Link></li>
+                                    <li tabIndex={0}><Link to="/payments">Payments</Link></li>
                                 </ul>
                         </div>
                     </li>
@@ -133,15 +115,15 @@ class Menu extends React.Component <RouteComponentProps, MenuState> {
                         <button
                             className="menu-btn btn"
                             onClick={this.toggleSubMenu("contacts-menu")}
-                            onBlur={this.toggleSubMenu("")}
+                            onBlur={this.hideMenu("contacts-menu")}
                         >
                             <i className="fa fa-user" aria-hidden="true" />
                             <span className="menu-text">Contacts</span>
                         </button>
                         <div id="contacts-menu" className="sub-menu">
                                 <ul>
-                                    <li tabIndex={0}>Contact 1</li>
-                                    <li tabIndex={0}>Contact 2</li>
+                                    <li tabIndex={0}><Link to="/contacts">Contact 1</Link></li>
+                                    <li tabIndex={0}><Link to="/contacts">Contact 2</Link></li>
                                 </ul>
                         </div>
                     </li>

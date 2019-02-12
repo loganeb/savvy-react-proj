@@ -1,8 +1,10 @@
 import * as React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Billing from "../pages/Billing";
-import Home from "../pages/Home";
+import Accounts from "../pages/Accounts";
+import Contacts from "../pages/Contacts";
+import Dashboard from "../pages/Dashboard";
 import Messages from "../pages/Messages";
+import Payments from "../pages/Payments";
 import Header from "./Header";
 import Menu from "./Menu";
 import Sidebar from "./Sidebar";
@@ -63,10 +65,12 @@ class Layout extends React.Component <{}, LayoutState> {
                             <Menu />
                             <div className="Page col">
                                 <Switch>
-                                    <Route path="/billing" component={Billing} />
                                     <Route path="/messages" component={Messages} />
-                                    <Route path="/" component={Home} />
-                                    <Route component={Home} />
+                                    <Route path="/accounts" component={Accounts} />
+                                    <Route path="/payments" component={Payments} />
+                                    <Route path="/contacts" component={Contacts} />
+                                    <Route path="/" component={Dashboard} />
+                                    <Route component={Dashboard} />
                                 </Switch>
                             </div>
                             {this.sideBar()}

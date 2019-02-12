@@ -1,10 +1,10 @@
 import * as React from "react";
 import Template from "./Template";
 
-const Messages = () => {
+const Payments = () => {
     return(
-        <Template header="MESSAGES" />
+        <Template header="PAYMENTS" />
     );
 };
 
-export default Messages;
+export default Payments;
