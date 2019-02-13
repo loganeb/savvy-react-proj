@@ -1,0 +1,66 @@
+.Header{
+    min-height: $header-height;
+    background: rgb(9, 116, 134);
+    color: #fff;
+    width: 100%;
+
+    .brand{
+        width: $brand-width;
+
+        h1{
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 0.9em;
+        }
+    }
+
+    .searchbar{
+        margin: 0;
+        padding: 0;
+
+        input[type="text"]{
+            width: 100%;
+            background: rgb(14, 148, 172);
+            border: none;
+            border-radius: 7px;
+            padding: 3px;
+            font-family: FontAwesome, Arial;
+            color: #fff;
+        }
+
+        ::placeholder{
+            color: #ddd;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+    }
+
+    .searchbar-under{
+        width: 90%;
+        padding: 10px;
+        margin: auto;
+    }
+
+    .search-toggle-btn{
+        display: none
+    }
+
+    .header-buttons{
+        max-width: 150px;
+        display: flex;
+        justify-content: flex-end;
+
+        .btn{
+            color: #fff;
+            width: 40px;
+            padding: 5px;
+        }
+
+        .btn:focus{
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+        }
+    }
+
+    
+}// end .Header

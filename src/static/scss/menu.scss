@@ -1,0 +1,77 @@
+.Menu{
+    max-width: $brand-width + 30;
+    min-width: 200px;
+    background: $content-bg;
+    height: 100%;
+    box-shadow: 2px 0px 5px 0 rgba(0,0,0,0.2);
+
+    .menu-items{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menu-btn{
+        padding: 0;
+        color: #888;
+
+        i{ width: 40px; }
+
+        .menu-text{
+            padding: 5px;
+            color: #555;
+        }
+    }
+
+    .btn:focus{
+        background: rgb(194, 194, 194);
+        outline-color: rgb(0, 0, 0);
+        border: 2px solid rgba(0,0,0,0.6);
+        box-shadow: none;
+    }
+
+    .sub-menu{
+        display: none;
+        position: relative;
+        color: #555;
+
+        ul{
+          list-style: none; 
+          padding: 0;
+          padding-left: 60px;
+          margin: 0; 
+        }
+
+        a{
+            color: #555;
+        }
+
+        a:visited{
+            color: #555; 
+        }
+        
+    }
+}// end .Menu
+
+.menu-collapsed{
+    max-width: 70px;
+    min-width: 70px;
+
+    .menu-text{
+        display: none;
+    }
+
+    .sub-menu{
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        background: #fff;
+        border: 1px solid rgba(0,0,0, 0.2);
+        border-radius: 5px;
+
+        ul{ 
+            padding: 10px;
+            margin: 0;
+        }
+    }
+}// end .menu-collapsed

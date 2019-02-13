@@ -1,0 +1,54 @@
+.Sidebar {
+    max-width: 300px;
+    min-width: 200px;
+    padding: 5px;
+
+    .sidebar-header{
+        height: $content-header-height + 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        font-size: 0.9em;
+        font-weight: bold;
+        padding-left: 10px;
+
+        i{
+            font-size: 2em;
+            color: #aaa;
+        }
+    }
+
+    .sidebar-body{
+        background: $content-bg;
+        height: 100%;
+        padding: 10px;
+        box-shadow: $body-box-shadow;
+    }
+
+    .sidebar-list{
+        list-style: none;
+        border: $element-border;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .transaction-list{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 0.8em;
+    }
+
+    .message-btn{
+        width: 100%;
+    }
+
+    .message-body{
+        border: 1px solid rgba(0,0,0,0.1);
+        padding: 10px;
+        background: #fff;
+    }
+}// end .Sidebar
