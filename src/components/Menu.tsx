@@ -28,7 +28,7 @@ export class Menu extends React.Component <RouteComponentProps, MenuState> {
     public hideSubMenu = (id: string) => (): void => {
         if (this.state.collapsed) {
             setTimeout(() => (document.getElementById(id).style.display = "none"),
-            100);
+            200);
         }
     }
 
