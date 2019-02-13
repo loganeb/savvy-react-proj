@@ -4,7 +4,9 @@ import Accounts from "../pages/Accounts";
 import Contacts from "../pages/Contacts";
 import Dashboard from "../pages/Dashboard";
 import Messages from "../pages/Messages";
+import Notifications from "../pages/Notifications";
 import Payments from "../pages/Payments";
+import Transactions from "../pages/Transactions";
 import Header from "./Header";
 import Menu from "./Menu";
 import Sidebar from "./Sidebar";
@@ -69,6 +71,8 @@ class Layout extends React.Component <{}, LayoutState> {
                                     <Route path="/accounts" component={Accounts} />
                                     <Route path="/payments" component={Payments} />
                                     <Route path="/contacts" component={Contacts} />
+                                    <Route path="/transactions" component={Transactions} />
+                                    <Route path="/notifications" component={Notifications} />
                                     <Route path="/" component={Dashboard} />
                                     <Route component={Dashboard} />
                                 </Switch>

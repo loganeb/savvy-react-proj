@@ -15,7 +15,7 @@ export class Menu extends React.Component <RouteComponentProps, MenuState> {
         };
 
         this.navigate = this.navigate.bind(this);
-        this.hideMenu = this.hideMenu.bind(this);
+        this.hideSubMenu = this.hideSubMenu.bind(this);
         this.toggleSubMenu = this.toggleSubMenu.bind(this);
         this.toggleCollapse = this.toggleCollapse.bind(this);
         this.isCollapsed = this.isCollapsed.bind(this);
@@ -25,7 +25,7 @@ export class Menu extends React.Component <RouteComponentProps, MenuState> {
         this.props.history.push(route);
     }
 
-    public hideMenu = (id: string) => (): void => {
+    public hideSubMenu = (id: string) => (): void => {
         if (this.state.collapsed) {
             setTimeout(() => (document.getElementById(id).style.display = "none"),
             100);
@@ -99,7 +99,7 @@ export class Menu extends React.Component <RouteComponentProps, MenuState> {
                         <button
                             className="menu-btn btn"
                             onClick={this.toggleSubMenu("billing-menu")}
-                            onBlur={this.hideMenu("billing-menu")}
+                            onBlur={this.hideSubMenu("billing-menu")}
                             tabIndex={0}
                         >
                             <i className="fa fa-credit-card" aria-hidden="true" />
@@ -116,7 +116,7 @@ export class Menu extends React.Component <RouteComponentProps, MenuState> {
                         <button
                             className="menu-btn btn"
                             onClick={this.toggleSubMenu("contacts-menu")}
-                            onBlur={this.hideMenu("contacts-menu")}
+                            onBlur={this.hideSubMenu("contacts-menu")}
                         >
                             <i className="fa fa-user" aria-hidden="true" />
                             <span className="menu-text">Contacts</span>
@@ -127,6 +127,24 @@ export class Menu extends React.Component <RouteComponentProps, MenuState> {
                                     <li tabIndex={0}><Link to="/contacts">Contact 2</Link></li>
                                 </ul>
                         </div>
+                    </li>
+                    <li>
+                        <button className="menu-btn btn" onClick={this.navigate("/messages")}>
+                            <i className="fa fa-comments" aria-hidden="true" />
+                            <span className="menu-text">Messages</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button className="menu-btn btn" onClick={this.navigate("/transactions")}>
+                            <i className="fa fa-clock-o" aria-hidden="true" />
+                            <span className="menu-text">Transactions</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button className="menu-btn btn" onClick={this.navigate("/notifications")}>
+                            <i className="fa fa-bell" aria-hidden="true" />
+                            <span className="menu-text">Notifications</span>
+                        </button>
                     </li>
                 </ul>
             </nav>

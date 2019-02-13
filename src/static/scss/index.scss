@@ -68,6 +68,16 @@ body{
         }
     }
 
+    .searchbar-under{
+        width: 90%;
+        padding: 10px;
+        margin: auto;
+    }
+
+    .search-toggle-btn{
+        display: none
+    }
+
     .header-buttons{
         max-width: 150px;
         display: flex;
@@ -261,14 +271,30 @@ body{
 @media only screen and (max-width: 600px){
     .searchbar{
         display: none;
-    }   
+    }
+
+    .searchbar-under{
+        display: block !important;
+    }
+    
+    .search-toggle-btn{
+        display: inline !important;
+    }
+
+    .btn-link{
+        display: none;
+    }
+
+    .Sidebar{
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 750px){
     .Page{
         .page-header{
             h4{
-                font-size: 0.9em;
+                font-size: 0.8em;
             }
         }
 

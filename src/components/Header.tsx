@@ -7,8 +7,8 @@ interface HeaderProps {// tslint:disable-line
 class Header extends React.Component<HeaderProps, {}> {
     public render() {
         return (
-            <header className="Header">
-                <nav className="navbar navbar-default">
+            <header className="Header container-fluid">
+                <nav className="navbar navbar-default row">
                     <div className="brand navbar-brand">
                         <h1><strong>LEGAL</strong>PRACTICE</h1>
                     </div>
@@ -25,8 +25,24 @@ class Header extends React.Component<HeaderProps, {}> {
                         <button className="btn btn-link" onClick={this.props.toggleSideBar("messages")}>
                             <i className="fa fa-comments" aria-hidden="true"/>
                         </button>
+                        {/* Toggle visibility of searchbar on mobile screens */}
+                        <button
+                            className="btn search-toggle-btn"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#collapseSearchbar"
+                            aria-expanded="false"
+                            aria-controls="collapseExample"
+                        >
+                            <i className="fa fa-search" aria-hidden="true"/>
+                        </button>
                     </div>
                 </nav>
+                <div className="collapse" id="collapseSearchbar">
+                    <div className="searchbar searchbar-under navbar-item form-inline row">
+                            <input type="text" placeholder="&#xF002; Search" />
+                    </div>
+                </div>
             </header>
         );
     }
